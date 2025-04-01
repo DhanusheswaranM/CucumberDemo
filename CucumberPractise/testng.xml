@@ -3,7 +3,6 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
   <classes>
-  <class name="runner.runnerTestNG"/>
-  </classes>
+  <class name="runner.runnerTestNG"/></classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
