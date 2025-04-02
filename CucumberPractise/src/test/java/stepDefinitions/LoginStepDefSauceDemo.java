@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
 import io.cucumber.java.After;
@@ -17,16 +19,36 @@ import io.cucumber.java.en.When;
 public class LoginStepDefSauceDemo {
 	
 	public WebDriver driver ;
+	@Before("@ChromeBrowser")
+	public void BeforeChrome() {
+		System.out.println("------------Chrome browser opening------------");
+		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	}
+	
+	@Before("@FireFoxBrowser")
+	public void BeforeFireFox() {
+		System.out.println("$$$$$$$$$$$$$FireFox browser opening$$$$$$$$$$$$$");
+		driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	}
+	
+	@Before("@EdgeBrowser")
+	public void BeforeEdge() {
+		System.out.println("*************Edge browser opening*************");
+		driver = new EdgeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	}
+	
 	
 	@Before
 	public void setup() {
 		System.out.println("----------Before Executing----------");
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
 	}
 	@Given("the user in on Login page")
 	public void the_user_in_on_login_page() {
+		
 		driver.get("https://www.saucedemo.com/v1/index.html");
 	}
 
@@ -55,6 +77,7 @@ public class LoginStepDefSauceDemo {
 		String expectedProductPageTxt = "Products";
 		Assert.assertTrue(productPageTxt.contains(expectedProductPageTxt));
 		System.out.println("Loggedin successfully");
+		driver.quit();
 	}
 
 	@When("the user provides the blank username")
@@ -67,7 +90,7 @@ public class LoginStepDefSauceDemo {
 	public void the_user_is_able_to_visible_the_error_message() {
 		WebElement error = driver.findElement(By.xpath("//div[@id=\"login_button_container\"]/div/form/h3"));
 		System.out.println("---------------"+error.getText()+"---------------");
-		
+		driver.quit();
 	}
 
 	@When("the user provides the blank password")
@@ -90,8 +113,22 @@ public class LoginStepDefSauceDemo {
 	
 	@After
 	public void teardown() {
-		System.out.println("----------After Executing----------");
-		driver.quit();
+		System.out.println("----------Before Executing----------");
+	}
+	
+	@After("@ChromeBrowser")
+	public void AfterChrome() {
+		System.out.println("------------Chrome browser closed------------");
+	}
+	
+	@After("@FireFoxBrowser")
+	public void AfterFireFox() {
+		System.out.println("$$$$$$$$$$$$$FireFox browser closed$$$$$$$$$$$$$");
+	}
+	
+	@After("@EdgeBrowser")
+	public void AfterEdge() {
+		System.out.println("*************Edge browser closed*************");
 	}
 
 

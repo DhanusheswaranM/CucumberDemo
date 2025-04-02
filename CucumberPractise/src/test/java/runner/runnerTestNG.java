@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
     plugin = {"pretty", "json:target/cucumber-reports/CucumberForSauceDemoForTestNG.json"},
     features = "src/test/resources/com/features/SauceDemo.feature",
     glue = "stepDefinitions"
+//    ,tags = ("not @Regression")
 )
 public class runnerTestNG extends AbstractTestNGCucumberTests {
 
