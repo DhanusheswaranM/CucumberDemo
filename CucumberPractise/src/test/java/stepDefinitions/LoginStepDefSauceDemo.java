@@ -33,12 +33,12 @@ public class LoginStepDefSauceDemo {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 	
-	@Before("@EdgeBrowser")
-	public void BeforeEdge() {
-		System.out.println("*************Edge browser opening*************");
-		driver = new EdgeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-	}
+//	@Before("@EdgeBrowser")
+//	public void BeforeEdge() {
+//		System.out.println("*************Edge browser opening*************");
+//		driver = new EdgeDriver();
+//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//	}
 	
 	
 	@Before
@@ -126,10 +126,10 @@ public class LoginStepDefSauceDemo {
 		System.out.println("$$$$$$$$$$$$$FireFox browser closed$$$$$$$$$$$$$");
 	}
 	
-	@After("@EdgeBrowser")
-	public void AfterEdge() {
-		System.out.println("*************Edge browser closed*************");
-	}
+//	@After("@EdgeBrowser")
+//	public void AfterEdge() {
+//		System.out.println("*************Edge browser closed*************");
+//	}
 
 
 }

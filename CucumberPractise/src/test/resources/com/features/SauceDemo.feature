@@ -1,4 +1,3 @@
-
 Feature: SauceDemo Feature
   I want to use this template for my feature file
   Background:
@@ -22,7 +21,7 @@ Feature: SauceDemo Feature
 	And the user clicks the login button
 	Then the user is able to visible the error message
 	
-	@EdgeBrowser
+	@FireFoxBrowser
 @InValidCredentialsWithBlankPassword
 	Scenario: To test Login features with invalid password 
 	
@@ -31,7 +30,7 @@ Feature: SauceDemo Feature
 	And the user clicks the login button
 	Then the user is able to visible the error message
 	
-	@EdgeBrowser
+	@ChromeBrowser
 @InValidCredentials, @Regression
 	Scenario: To test Login features with invalid username and password
 	
