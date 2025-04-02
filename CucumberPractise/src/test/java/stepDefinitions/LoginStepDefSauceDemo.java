@@ -48,7 +48,8 @@ public class LoginStepDefSauceDemo {
 	}
 	@Given("the user in on Login page")
 	public void the_user_in_on_login_page() {
-		
+		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get("https://www.saucedemo.com/v1/index.html");
 	}
 
