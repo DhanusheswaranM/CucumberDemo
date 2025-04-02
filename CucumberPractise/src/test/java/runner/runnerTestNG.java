@@ -5,7 +5,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-    plugin = {"pretty", "html:target/cucumber-reports/CucumberForSauceDemoForTestNG.html"},
+    plugin = {"pretty", "json:target/cucumber-reports/CucumberForSauceDemoForTestNG.json"},
     features = "src/test/resources/com/features/SauceDemo.feature",
     glue = "stepDefinitions"
 )
