@@ -17,3 +17,4 @@ Scenario: to test the invalid Credentials
 Then User is able to visible the errorMessage
 	|Username		|Password		|ErrorMessage					|
 	|Admin1			|admin123$	|Invalid credentials	|
+	|Admin2			|admin123@	|Invalid credentials	|

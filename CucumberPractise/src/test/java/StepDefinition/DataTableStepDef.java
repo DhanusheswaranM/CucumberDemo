@@ -51,24 +51,27 @@ public void user_should_be_able_to_login_successfully_and_new_page_will_open() {
 public void user_is_able_to_visible_the_error_message(io.cucumber.datatable.DataTable userTable) {
 	
 	List<Map<String,String>> user = userTable.asMaps(String.class , String.class);
-	String UserName = user.get(0).get("Username");
-	System.out.println("Username : "+UserName);
-	driver.findElement(By.name("username")).sendKeys(UserName);
 	
-	String PassWord = user.get(0).get("Password");
-	System.out.println("Password : "+PassWord);
-	driver.findElement(By.name("password")).sendKeys(PassWord);
-	
-	driver.findElement(By.xpath("//form[@class='oxd-form']/div[3]/button")).submit();
-	
-	String actualError = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]/p")).getText();
-	String expectedError = user.get(0).get("ErrorMessage");
-	
-	System.out.println("Actual Error : "+actualError);
-	Assert.assertTrue(expectedError.contains(actualError));
-	
+	for(Map<String , String> form:user) {
+		String UserName = form.get("Username");
+		System.out.println("Username : "+UserName);
+		driver.findElement(By.name("username")).sendKeys(UserName);
+		
+		String PassWord = form.get("Password");
+		System.out.println("Password : "+PassWord);
+		driver.findElement(By.name("password")).sendKeys(PassWord);
+		
+		driver.findElement(By.xpath("//form[@class='oxd-form']/div[3]/button")).submit();
+		
+		String actualError = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]/p")).getText();
+		String expectedError = user.get(0).get("ErrorMessage");
+		
+		System.out.println("Actual Error : "+actualError);
+		Assert.assertTrue(expectedError.contains(actualError));
+		
+		
+	}
 	driver.quit();
-	
 	
 }
 
